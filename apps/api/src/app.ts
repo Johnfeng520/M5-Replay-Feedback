@@ -12,6 +12,7 @@ import type { PrismaClient } from "@prisma/client";
 import { verifyPassword, newToken, tokenHash } from "./auth";
 import { registerPlayerRoutes } from "./modules/player";
 import { registerValidationRoutes } from "./modules/validation";
+import { registerReviewRoutes } from "./modules/review/routes";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 const repoRoot = resolve(import.meta.dirname, "../../..");
@@ -197,6 +198,7 @@ export async function createApp(db: PrismaClient) {
   await registerSaveRoutes(app, db);
   await registerPlayerRoutes(app, db);
   await registerValidationRoutes(app, db, { userFor, fail });
+  await registerReviewRoutes(app, db);
   registerStatic(app);
   return app;
 }

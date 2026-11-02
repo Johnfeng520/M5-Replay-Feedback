@@ -2678,7 +2678,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "沿用事件读取权限；事件异常返回 MISMATCH 与位置，禁止自动补齐或忽略。",
         "security": [
           {
@@ -2798,7 +2798,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅本人；先明确开启 shareWithCreator 才提交；seq=0 对应初始状态，seq=k 对应事件 k 之后。服务端重核 nodeId/versionId。",
         "security": [
           {
@@ -2965,7 +2965,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅活动所有者；要求查询参数 versionId，且它属于此活动；仅返回当前分享授权有效的记录。",
         "security": [
           {
@@ -3098,7 +3098,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅活动所有者；要求 versionId；只统计授权会话；初始状态算一次访问，每个事件的 after 算一次，结束会话计一次结局。",
         "security": [
           {

@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { api } from "./api";
 import { AuthorWorkspace } from "./author/AuthorWorkspace";
 import { PlayerEngine } from "./features/player/PlayerEngine";
+import { ReviewWorkspace } from "./features/review/ReviewWorkspace";
 import emblem from "./ui/assets/ornate/slider_block.png";
 import "./style.css";
 import "./stage.css";
@@ -112,7 +113,8 @@ function App() {
         </section>
       </main>
     );
-  const playing = route.startsWith("#/player");
+  const playing = route.startsWith("#/player"),
+    reviewing = route.startsWith("#/review");
   return (
     <>
       <nav className="stage-nav" aria-label="主导航">
@@ -124,11 +126,14 @@ function App() {
           </div>
         </a>
         <div className="stage-tabs">
-          <a href="#/author" aria-current={!playing ? "page" : undefined}>
+          <a href="#/author" aria-current={!playing && !reviewing ? "page" : undefined}>
             创作工作台
           </a>
           <a href="#/player" aria-current={playing ? "page" : undefined}>
             试玩与存档
+          </a>
+          <a href="#/review" aria-current={reviewing ? "page" : undefined}>
+            回放与反馈
           </a>
         </div>
         <div className="stage-account">
@@ -155,6 +160,8 @@ function App() {
         )}
         {playing ? (
           <PlayerEngine key={route + user.id} userId={user.id} />
+        ) : reviewing ? (
+          <ReviewWorkspace key={route + user.id} userId={user.id} />
         ) : (
           <AuthorWorkspace />
         )}
