@@ -3,12 +3,16 @@
   "info": {
     "title": "互动剧情平台 v1 接口契约",
     "version": "1.0.0",
-    "description": "前期交接契约。x-implementation-status 区分已实现和待实现。成功 data 包装，错误 error 包装；204 无正文。只有基础鉴权与开发样例已实现。"
+    "description": "2026-11-02 集成阶段契约：27个操作，其中23个已实现，M5回放/反馈/统计4个待实现。成功data包装，错误error包装；204无正文。"
   },
   "servers": [
     {
       "url": "http://localhost:5173",
       "description": "开发前端代理，与 Cookie 同源"
+    },
+    {
+      "url": "http://localhost:3001",
+      "description": "构建后同源服务"
     }
   ],
   "paths": {
@@ -394,7 +398,7 @@
           "M1"
         ],
         "x-owner": "M1",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "只返回当前用户拥有的活动，v1 最多 100 项。",
         "security": [
           {
@@ -503,7 +507,7 @@
           "M1"
         ],
         "x-owner": "M1",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "ownerId 来自登录；requestId 幂等；创建一个可编辑的初始节点，尚不能视为可发布。",
         "security": [
           {
@@ -638,7 +642,7 @@
           "M1"
         ],
         "x-owner": "M1",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅活动所有者。",
         "security": [
           {
@@ -756,7 +760,7 @@
           "M1"
         ],
         "x-owner": "M1",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅所有者；UPDATE WHERE revision=expectedRevision，成功加 1；不符 409 REVISION_CONFLICT。允许结构未完的草稿，但 JSON 字段类型须合法。",
         "security": [
           {
@@ -904,7 +908,7 @@
           "M1"
         ],
         "x-owner": "M1",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "目录为空时纯文字仍可使用；素材不可覆盖原文件。",
         "security": [
           {
@@ -1155,7 +1159,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅所有者；服务端重新检查捕获的同一快照；事务中复核修订、保存快照、编号、幂等回执；检查失败 422。",
         "security": [
           {
@@ -1299,7 +1303,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "登录用户可读已发布版本；首版最多 100 项，不以草稿替代。",
         "security": [
           {
@@ -1422,7 +1426,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "登录用户可读；版本不可变。",
         "security": [
           {
@@ -1542,7 +1546,7 @@
           "M2"
         ],
         "x-owner": "M2",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "playerId 来自登录；初始状态来自固定版本；seq=0；是否分享由玩家明确选择，页面默认关闭。",
         "security": [
           {
@@ -1687,7 +1691,7 @@
           "M2"
         ],
         "x-owner": "M2",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅当前玩家；作者查看使用 replay 接口及分享授权。",
         "security": [
           {
@@ -1823,7 +1827,7 @@
           "M2"
         ],
         "x-owner": "M2",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅当前玩家；先查同请求回执再校验序号；状态与事件同事务。相同 requestId 不同 payload 返回 409 IDEMPOTENCY_CONFLICT。",
         "security": [
           {
@@ -1975,7 +1979,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅当前玩家；状态和版本从服务端会话读取；序号不符 409；保存与幂等回执同事务。",
         "security": [
           {
@@ -2126,7 +2130,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅本人，首版最多 100 项；任何创作者都不能读取他人存档。",
         "security": [
           {
@@ -2237,7 +2241,7 @@
           "M4"
         ],
         "x-owner": "M4",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅存档所有者；新会话 seq=0，initialState 等于存档，versionId 仍为原版本；来源字段保存原会话和原序号。",
         "security": [
           {
@@ -2382,7 +2386,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "仅本人；关闭后作者不可再查询会话事件或关联反馈，统计也排除。",
         "security": [
           {
@@ -2521,7 +2525,7 @@
           "M5"
         ],
         "x-owner": "M5",
-        "x-implementation-status": "planned",
+        "x-implementation-status": "implemented",
         "description": "本人或对应活动所有者且已授权分享；按 seq 升序；v1 会话上限 500 次有效操作，完整返回，不静默截断。",
         "security": [
           {
@@ -3215,6 +3219,53 @@
           }
         ]
       }
+    },
+    "/api/v1/media/{hash}": {
+      "get": {
+        "operationId": "readImmutableMedia",
+        "summary": "读取固定版本素材内容",
+        "tags": [
+          "M4"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "内容寻址素材，需登录",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "未登录"
+          },
+          "404": {
+            "description": "素材不存在"
+          }
+        },
+        "x-owner": "M4",
+        "x-implementation-status": "implemented",
+        "x-policy": "按内容哈希固定，发布后不覆盖。"
+      }
     }
   },
   "components": {
@@ -3523,7 +3574,8 @@
           "stage": {
             "type": "string",
             "enum": [
-              "foundation"
+              "foundation",
+              "integrated-m4"
             ]
           },
           "contractVersion": {

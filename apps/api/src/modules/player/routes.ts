@@ -1,26 +1,19 @@
 import type { FastifyInstance } from "fastify";
 import type { PrismaClient } from "@prisma/client";
 import { playerService } from "./service";
-
-/**
- * M2 player 路由骨架：三个接口先搭基础结构，服务端逻辑暂未连库（返回 501）。
- * 骨架阶段暂无鉴权接线，playerId 用占位；真实归属校验由 M4 的鉴权工具提供。
- */
+import {
+  requireUser,
+  body,
+  requestIdSchema,
+  sequenceSchema,
+} from "../../infrastructure/http";
+import { transact } from "../../infrastructure/core";
+import { readEventStream } from "../events";
 export async function registerPlayerRoutes(
   app: FastifyInstance,
-  _db: PrismaClient,
+  db: PrismaClient,
 ) {
-  const service = playerService();
-
-  const notImplemented = (reply: any, req: any, e: unknown) =>
-    reply.code(501).send({
-      error: {
-        code: "NOT_IMPLEMENTED",
-        message: (e as Error).message,
-        requestId: req.id,
-      },
-    });
-
+  const s = playerService(db);
   app.post<{
     Params: { versionId: string };
     Body: { requestId: string; shareWithCreator: boolean };
@@ -28,44 +21,32 @@ export async function registerPlayerRoutes(
     "/api/v1/versions/:versionId/sessions",
     {
       schema: {
-        body: {
-          type: "object",
-          additionalProperties: false,
-          required: ["requestId", "shareWithCreator"],
-          properties: {
-            requestId: { type: "string", minLength: 1, maxLength: 128 },
-            shareWithCreator: { type: "boolean" },
-          },
-        },
+        body: body({
+          requestId: requestIdSchema,
+          shareWithCreator: { type: "boolean" },
+        }),
       },
     },
-    async (req, reply) => {
-      try {
-        const session = await service.createSession({
-          versionId: req.params.versionId,
-          playerId: "M2-SKELETON",
-          requestId: req.body.requestId,
-          shareWithCreator: req.body.shareWithCreator,
-        });
-        return { data: session };
-      } catch (e) {
-        return notImplemented(reply, req, e);
-      }
-    },
+    async (req, reply) =>
+      reply
+        .code(201)
+        .send({
+          data: await s.createSession({
+            ...req.body,
+            versionId: req.params.versionId,
+            playerId: (await requireUser(db, req)).id,
+          }),
+        }),
   );
-
   app.get<{ Params: { sessionId: string } }>(
     "/api/v1/sessions/:sessionId",
-    async (req, reply) => {
-      try {
-        const session = await service.getSession(req.params.sessionId);
-        return { data: session };
-      } catch (e) {
-        return notImplemented(reply, req, e);
-      }
-    },
+    async (req) => ({
+      data: await s.getSession(
+        (await requireUser(db, req)).id,
+        req.params.sessionId,
+      ),
+    }),
   );
-
   app.post<{
     Params: { sessionId: string };
     Body: { choiceId: string; expectedSeq: number; requestId: string };
@@ -73,33 +54,49 @@ export async function registerPlayerRoutes(
     "/api/v1/sessions/:sessionId/choices",
     {
       schema: {
-        body: {
-          type: "object",
-          additionalProperties: false,
-          required: ["choiceId", "expectedSeq", "requestId"],
-          properties: {
-            choiceId: { type: "string", minLength: 1, maxLength: 128 },
-            expectedSeq: { type: "integer", minimum: 0 },
-            requestId: { type: "string", minLength: 1, maxLength: 128 },
-          },
-        },
+        body: body({
+          choiceId: requestIdSchema,
+          expectedSeq: sequenceSchema,
+          requestId: requestIdSchema,
+        }),
       },
     },
-    async (req, reply) => {
-      // 事务固定顺序见 service.executeChoice 内注释：
-      // 鉴权 → 回执 → 摘要 → seq → 版本 → applyChoice → 条件更新 → 事件
-      try {
-        const resp = await service.executeChoice({
-          sessionId: req.params.sessionId,
-          playerId: "M2-SKELETON",
-          choiceId: req.body.choiceId,
-          expectedSeq: req.body.expectedSeq,
-          requestId: req.body.requestId,
-        });
-        return { data: resp };
-      } catch (e) {
-        return notImplemented(reply, req, e);
-      }
+    async (req) => ({
+      data: await s.executeChoice({
+        ...req.body,
+        sessionId: req.params.sessionId,
+        playerId: (await requireUser(db, req)).id,
+      }),
+    }),
+  );
+  app.patch<{
+    Params: { sessionId: string };
+    Body: { shareWithCreator: boolean };
+  }>(
+    "/api/v1/sessions/:sessionId/sharing",
+    { schema: { body: body({ shareWithCreator: { type: "boolean" } }) } },
+    async (req) => ({
+      data: await s.setSharing(
+        (await requireUser(db, req)).id,
+        req.params.sessionId,
+        req.body.shareWithCreator,
+      ),
+    }),
+  );
+  app.get<{ Params: { sessionId: string } }>(
+    "/api/v1/sessions/:sessionId/events",
+    async (req) => {
+      const actor = (await requireUser(db, req)).id;
+      return {
+        data: await transact(db, async (tx) => {
+          const session = await s.readForReview(
+            tx,
+            actor,
+            req.params.sessionId,
+          );
+          return readEventStream(tx, session);
+        }),
+      };
     },
   );
 }

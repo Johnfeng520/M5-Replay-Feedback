@@ -7,3 +7,8 @@ node_modules/
 apps/web/dist/
 coverage/
 .local/
+
+data/media/
+backups/
+restored/
+*.env

@@ -1,0 +1,18 @@
+{
+  "baseline": "见ZIP根目录阶段发布清单.json的integrationCommit",
+  "role": null,
+  "memberName": null,
+  "nodeVersion": null,
+  "cloneMethod": "共同基线.bundle",
+  "verifyExitCode": null,
+  "browserScenario": null,
+  "receivedCommit": null,
+  "reviewer": null,
+  "reviewedAt": null,
+  "nextDelivery": {
+    "commit": null,
+    "changedFiles": [],
+    "testEvidence": [],
+    "receiver": null
+  }
+}

@@ -29,8 +29,12 @@ execFileSync(
     "apps/api/prisma/schema.prisma",
   ],
   {
-    env: { ...process.env, CHECKPOINT_DISABLE: "1", PRISMA_HIDE_UPDATE_MESSAGE: "1" },
+    env: {
+      ...process.env,
+      CHECKPOINT_DISABLE: "1",
+      PRISMA_HIDE_UPDATE_MESSAGE: "1",
+    },
     stdio: "inherit",
-    timeout: 25000,
+    timeout: 60000,
   },
 );

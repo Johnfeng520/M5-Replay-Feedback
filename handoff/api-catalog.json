@@ -8,7 +8,16 @@
     "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/Health"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Health"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -17,7 +26,7 @@
     "owner": "M4",
     "summary": "登录",
     "implemented": true,
-    "policy": "Origin 必须等于 WEB_ORIGIN；成功设置 HttpOnly SameSite=Strict 的 sid Cookie。",
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -35,7 +44,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/User"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/User"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -47,7 +65,16 @@
     "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/User"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/User"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -56,7 +83,7 @@
     "owner": "M4",
     "summary": "退出登录",
     "implemented": true,
-    "policy": "校验 Origin；撤销数据库登录会话并清除 Cookie。",
+    "policy": "",
     "body": null,
     "response": null
   },
@@ -66,26 +93,35 @@
     "owner": "M4",
     "summary": "开发期配置样例",
     "implemented": true,
-    "policy": "仅 development。name 只允许 baseline 或 second；生产环境不注册。",
+    "policy": "",
     "body": null,
     "response": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "story": {
-          "$ref": "#/components/schemas/Story"
-        },
-        "layout": {
-          "$ref": "#/components/schemas/Layout"
-        },
-        "fixtureOnly": {
-          "type": "boolean"
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "story": {
+              "$ref": "#/components/schemas/Story"
+            },
+            "layout": {
+              "$ref": "#/components/schemas/Layout"
+            },
+            "fixtureOnly": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "story",
+            "layout",
+            "fixtureOnly"
+          ]
         }
       },
       "required": [
-        "story",
-        "layout",
-        "fixtureOnly"
+        "data"
       ]
     }
   },
@@ -94,14 +130,23 @@
     "path": "/api/v1/activities",
     "owner": "M1",
     "summary": "本人活动列表",
-    "implemented": false,
-    "policy": "只返回当前用户拥有的活动，v1 最多 100 项。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/Activity"
-      }
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Activity"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -109,8 +154,8 @@
     "path": "/api/v1/activities",
     "owner": "M1",
     "summary": "新建活动",
-    "implemented": false,
-    "policy": "ownerId 来自登录；requestId 幂等；创建一个可编辑的初始节点，尚不能视为可发布。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -132,7 +177,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Draft"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Draft"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -140,11 +194,20 @@
     "path": "/api/v1/activities/{activityId}/draft",
     "owner": "M1",
     "summary": "读取草稿",
-    "implemented": false,
-    "policy": "仅活动所有者。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/Draft"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Draft"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -152,8 +215,8 @@
     "path": "/api/v1/activities/{activityId}/draft",
     "owner": "M1",
     "summary": "保存草稿",
-    "implemented": false,
-    "policy": "仅所有者；UPDATE WHERE revision=expectedRevision，成功加 1；不符 409 REVISION_CONFLICT。允许结构未完的草稿，但 JSON 字段类型须合法。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -176,7 +239,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Draft"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Draft"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -184,14 +256,23 @@
     "path": "/api/v1/assets",
     "owner": "M1",
     "summary": "预置素材目录",
-    "implemented": false,
-    "policy": "目录为空时纯文字仍可使用；素材不可覆盖原文件。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/Asset"
-      }
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Asset"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -199,8 +280,8 @@
     "path": "/api/v1/activities/{activityId}/checks",
     "owner": "M3",
     "summary": "检查指定草稿修订",
-    "implemented": false,
-    "policy": "仅所有者；服务端读取同修订快照；预算由服务端配置。返回问题不算 HTTP 失败；complete=false 必须 publishable=false。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -215,7 +296,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Report"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Report"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -223,8 +313,8 @@
     "path": "/api/v1/activities/{activityId}/versions",
     "owner": "M4",
     "summary": "发布指定修订",
-    "implemented": false,
-    "policy": "仅所有者；服务端重新检查捕获的同一快照；事务中复核修订、保存快照、编号、幂等回执；检查失败 422。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -245,7 +335,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Version"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Version"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -253,14 +352,23 @@
     "path": "/api/v1/activities/{activityId}/versions",
     "owner": "M4",
     "summary": "查看可玩版本列表",
-    "implemented": false,
-    "policy": "登录用户可读已发布版本；首版最多 100 项，不以草稿替代。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/Version"
-      }
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Version"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -268,11 +376,20 @@
     "path": "/api/v1/versions/{versionId}",
     "owner": "M4",
     "summary": "读取固定发布版本",
-    "implemented": false,
-    "policy": "登录用户可读；版本不可变。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/Version"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Version"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -280,8 +397,8 @@
     "path": "/api/v1/versions/{versionId}/sessions",
     "owner": "M2",
     "summary": "开始试玩",
-    "implemented": false,
-    "policy": "playerId 来自登录；初始状态来自固定版本；seq=0；是否分享由玩家明确选择，页面默认关闭。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -301,7 +418,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Session"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Session"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -309,26 +435,35 @@
     "path": "/api/v1/sessions/{sessionId}",
     "owner": "M2",
     "summary": "读取本人试玩状态",
-    "implemented": false,
-    "policy": "仅当前玩家；作者查看使用 replay 接口及分享授权。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "session": {
-          "$ref": "#/components/schemas/Session"
-        },
-        "choices": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/ChoiceView"
-          }
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "session": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "choices": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ChoiceView"
+              }
+            }
+          },
+          "required": [
+            "session",
+            "choices"
+          ]
         }
       },
       "required": [
-        "session",
-        "choices"
+        "data"
       ]
     }
   },
@@ -337,8 +472,8 @@
     "path": "/api/v1/sessions/{sessionId}/choices",
     "owner": "M2",
     "summary": "执行一次选择",
-    "implemented": false,
-    "policy": "仅当前玩家；先查同请求回执再校验序号；状态与事件同事务。相同 requestId 不同 payload 返回 409 IDEMPOTENCY_CONFLICT。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -365,7 +500,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/ChoiceResult"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/ChoiceResult"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -373,8 +517,8 @@
     "path": "/api/v1/sessions/{sessionId}/saves",
     "owner": "M4",
     "summary": "保存当前进度",
-    "implemented": false,
-    "policy": "仅当前玩家；状态和版本从服务端会话读取；序号不符 409；保存与幂等回执同事务。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -400,7 +544,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Save"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Save"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -408,14 +561,23 @@
     "path": "/api/v1/saves",
     "owner": "M4",
     "summary": "本人存档列表",
-    "implemented": false,
-    "policy": "仅本人，首版最多 100 项；任何创作者都不能读取他人存档。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/Save"
-      }
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Save"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -423,8 +585,8 @@
     "path": "/api/v1/saves/{saveId}/restores",
     "owner": "M4",
     "summary": "恢复为新会话分支",
-    "implemented": false,
-    "policy": "仅存档所有者；新会话 seq=0，initialState 等于存档，versionId 仍为原版本；来源字段保存原会话和原序号。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -444,7 +606,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Session"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Session"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -452,8 +623,8 @@
     "path": "/api/v1/sessions/{sessionId}/sharing",
     "owner": "M5",
     "summary": "修改回放分享授权",
-    "implemented": false,
-    "policy": "仅本人；关闭后作者不可再查询会话事件或关联反馈，统计也排除。",
+    "implemented": true,
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -467,7 +638,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Session"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Session"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -475,43 +655,52 @@
     "path": "/api/v1/sessions/{sessionId}/events",
     "owner": "M5",
     "summary": "读取顺序事件",
-    "implemented": false,
-    "policy": "本人或对应活动所有者且已授权分享；按 seq 升序；v1 会话上限 500 次有效操作，完整返回，不静默截断。",
+    "implemented": true,
+    "policy": "",
     "body": null,
     "response": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "sessionId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 64
-        },
-        "versionId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 64
-        },
-        "initialState": {
-          "$ref": "#/components/schemas/RuntimeState"
-        },
-        "finalSeq": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "events": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/Event"
-          }
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sessionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "versionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "initialState": {
+              "$ref": "#/components/schemas/RuntimeState"
+            },
+            "finalSeq": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          },
+          "required": [
+            "sessionId",
+            "versionId",
+            "initialState",
+            "finalSeq",
+            "events"
+          ]
         }
       },
       "required": [
-        "sessionId",
-        "versionId",
-        "initialState",
-        "finalSeq",
-        "events"
+        "data"
       ]
     }
   },
@@ -521,10 +710,19 @@
     "owner": "M5",
     "summary": "核对规则回放",
     "implemented": false,
-    "policy": "沿用事件读取权限；事件异常返回 MISMATCH 与位置，禁止自动补齐或忽略。",
+    "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/Replay"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Replay"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -533,7 +731,7 @@
     "owner": "M5",
     "summary": "提交节点反馈",
     "implemented": false,
-    "policy": "仅本人；先明确开启 shareWithCreator 才提交；seq=0 对应初始状态，seq=k 对应事件 k 之后。服务端重核 nodeId/versionId。",
+    "policy": "",
     "body": {
       "type": "object",
       "additionalProperties": false,
@@ -575,7 +773,16 @@
       ]
     },
     "response": {
-      "$ref": "#/components/schemas/Feedback"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Feedback"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -584,13 +791,22 @@
     "owner": "M5",
     "summary": "创作者读取反馈",
     "implemented": false,
-    "policy": "仅活动所有者；要求查询参数 versionId，且它属于此活动；仅返回当前分享授权有效的记录。",
+    "policy": "",
     "body": null,
     "response": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/Feedback"
-      }
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Feedback"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
   },
   {
@@ -599,10 +815,29 @@
     "owner": "M5",
     "summary": "按版本统计试玩",
     "implemented": false,
-    "policy": "仅活动所有者；要求 versionId；只统计授权会话；初始状态算一次访问，每个事件的 after 算一次，结束会话计一次结局。",
+    "policy": "",
     "body": null,
     "response": {
-      "$ref": "#/components/schemas/Summary"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/Summary"
+        }
+      },
+      "required": [
+        "data"
+      ]
     }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/media/{hash}",
+    "owner": "M4",
+    "summary": "读取固定版本素材内容",
+    "implemented": true,
+    "policy": "按内容哈希固定，发布后不覆盖。",
+    "body": null,
+    "response": null
   }
 ]

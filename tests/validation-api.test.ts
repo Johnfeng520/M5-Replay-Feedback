@@ -17,6 +17,17 @@ const read = (p: string) =>
   JSON.parse(
     readFileSync(new URL("../fixtures/" + p, import.meta.url), "utf8"),
   );
+const sortJson = (v: any): string =>
+  Array.isArray(v)
+    ? "[" + v.map(sortJson).join(",") + "]"
+    : v && typeof v === "object"
+      ? "{" +
+        Object.keys(v)
+          .sort()
+          .map((k) => JSON.stringify(k) + ":" + sortJson(v[k]))
+          .join(",") +
+        "}"
+      : JSON.stringify(v);
 const baseline: Story = read("stories/baseline.story.json");
 let cookie = "";
 let activityId = "";
@@ -67,7 +78,7 @@ beforeAll(async () => {
     payload: { email: "owner@example.test", password: "local-test-password" },
   });
   cookie = login.cookies.map((c) => c.name + "=" + c.value).join("; ");
-}, 30000);
+}, 90000);
 
 afterAll(async () => {
   await app?.close();
@@ -122,9 +133,9 @@ describe("POST /activities/:id/checks", () => {
     expect(report.truncationReason).toBeNull();
     expect(report.issues).toEqual([]);
     // 正式摘要必须是服务端 SHA-256，与手工计算一致
-    const digest =
-      "sha256:" +
-      createHash("sha256").update(JSON.stringify(baseline)).digest("hex");
+    const digest = createHash("sha256")
+      .update(sortJson({ story: baseline, assets: [] }))
+      .digest("hex");
     expect(report.snapshotDigest).toBe(digest);
     expect(report.validatorVersion).toBe("1.0");
   });

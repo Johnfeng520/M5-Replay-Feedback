@@ -1,4 +1,12 @@
 import Fastify from "fastify";
+import { registerAuthoringRoutes } from "./modules/authoring";
+import { registerVersionRoutes } from "./modules/versions";
+import { registerSaveRoutes } from "./modules/saves";
+import contract from "../../../packages/contracts/openapi.json";
+import { requireUser, currentUser } from "./infrastructure/http";
+import { mediaRoot } from "./infrastructure/assets";
+import { ensure } from "./infrastructure/core";
+import { registerStatic } from "./infrastructure/static";
 import cookie from "@fastify/cookie";
 import type { PrismaClient } from "@prisma/client";
 import { verifyPassword, newToken, tokenHash } from "./auth";
@@ -14,44 +22,83 @@ export async function createApp(db: PrismaClient) {
     ajv: { customOptions: { removeAdditional: false, coerceTypes: false } },
   });
   await app.register(cookie);
+  const rewrite = (v: any): any =>
+    Array.isArray(v)
+      ? v.map(rewrite)
+      : v && typeof v === "object"
+        ? Object.fromEntries(
+            Object.entries(v).map(([k, x]) => [
+              k,
+              k === "$ref" && typeof x === "string"
+                ? x.replace("#/components/schemas/", "") + "#"
+                : rewrite(x),
+            ]),
+          )
+        : v;
+  for (const [name, schema] of Object.entries(contract.components.schemas))
+    app.addSchema({ $id: name, ...rewrite(schema) });
+  app.get<{ Params: { hash: string } }>(
+    "/api/v1/media/:hash",
+    async (req, reply) => {
+      await requireUser(db, req);
+      ensure(
+        /^[a-f0-9]{64}$/.test(req.params.hash),
+        404,
+        "NOT_FOUND",
+        "素材不存在",
+      );
+      const data = await readFile(resolve(mediaRoot(), req.params.hash)).catch(
+        () => null,
+      );
+      ensure(data, 404, "NOT_FOUND", "素材不存在");
+      const png = data[0] === 137 && data[1] === 80,
+        jpg = data[0] === 255 && data[1] === 216;
+      const type = png
+        ? "image/png"
+        : jpg
+          ? "image/jpeg"
+          : data.toString("ascii", 0, 4) === "RIFF"
+            ? "audio/wav"
+            : data.toString("ascii", 0, 3) === "ID3" || data[0] === 255
+              ? "audio/mpeg"
+              : "application/octet-stream";
+      return reply
+        .header("X-Content-Type-Options", "nosniff")
+        .type(type)
+        .send(data);
+    },
+  );
   app.setErrorHandler((error, req, reply) => {
     const status =
       error.statusCode && error.statusCode < 500 ? error.statusCode : 500;
-    reply
-      .code(status)
-      .send({
-        error: {
-          code: status === 400 ? "BAD_REQUEST" : "INTERNAL_ERROR",
-          message: status === 500 ? "服务暂不可用" : error.message,
-          requestId: req.id,
-        },
-      });
+    reply.code(status).send({
+      error: {
+        code:
+          status === 400
+            ? "BAD_REQUEST"
+            : status < 500
+              ? error.code || "BUSINESS_ERROR"
+              : "INTERNAL_ERROR",
+        message: status === 500 ? "服务暂不可用" : error.message,
+        requestId: req.id,
+        ...(status < 500 && (error as any).details
+          ? { details: (error as any).details }
+          : {}),
+      },
+    });
   });
-  app.setNotFoundHandler((req, reply) =>
-    reply
-      .code(404)
-      .send({
-        error: {
-          code: "NOT_IMPLEMENTED_OR_NOT_FOUND",
-          message: "该接口尚未实现或不存在",
-          requestId: req.id,
-        },
-      }),
-  );
   app.addHook("preHandler", async (req, reply) => {
     if (
       !["GET", "HEAD", "OPTIONS"].includes(req.method) &&
       req.headers.origin !== process.env.WEB_ORIGIN
     ) {
-      return reply
-        .code(403)
-        .send({
-          error: {
-            code: "ORIGIN_FORBIDDEN",
-            message: "请求来源不被允许",
-            requestId: req.id,
-          },
-        });
+      return reply.code(403).send({
+        error: {
+          code: "ORIGIN_FORBIDDEN",
+          message: "请求来源不被允许",
+          requestId: req.id,
+        },
+      });
     }
   });
   const fail = (
@@ -61,21 +108,11 @@ export async function createApp(db: PrismaClient) {
     code: string,
     message: string,
   ) => reply.code(status).send({ error: { code, message, requestId: req.id } });
-  const userFor = async (req: any) => {
-    const token = req.cookies.sid;
-    if (!token) return null;
-    const session = await db.authSession.findUnique({
-      where: { tokenHash: tokenHash(token) },
-      include: { user: true },
-    });
-    return session && session.expiresAt.getTime() > Date.now()
-      ? session.user
-      : null;
-  };
+  const userFor = (req: any) => currentUser(db, req);
   app.get("/api/v1/health", async () => {
     await db.$queryRaw`SELECT 1`;
     return {
-      data: { status: "ok", stage: "foundation", contractVersion: "1.0" },
+      data: { status: "ok", stage: "integrated-m4", contractVersion: "1.0" },
     };
   });
   app.post<{ Body: { email: string; password: string } }>(
@@ -155,7 +192,11 @@ export async function createApp(db: PrismaClient) {
         return { data: { story, layout, fixtureOnly: true } };
       },
     );
+  await registerAuthoringRoutes(app, db);
+  await registerVersionRoutes(app, db);
+  await registerSaveRoutes(app, db);
   await registerPlayerRoutes(app, db);
   await registerValidationRoutes(app, db, { userFor, fail });
+  registerStatic(app);
   return app;
 }

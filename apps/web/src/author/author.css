@@ -1,0 +1,304 @@
+/* M1 创作编辑页样式，类名统一 author- 前缀，避免与全局 style.css 冲突。 */
+
+.author-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  color: #203040;
+  background: #eef2f5;
+}
+
+.author-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #c9d5df;
+}
+
+.author-topbar-left,
+.author-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-title {
+  min-width: 260px;
+  padding: 6px 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #c9d5df;
+  border-radius: 6px;
+}
+
+.author-revision {
+  color: #526677;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.author-status {
+  color: #2563eb;
+  font-size: 13px;
+}
+
+.author-btn,
+.author-topbar button,
+.author-form button,
+.author-vars button {
+  padding: 6px 12px;
+  font-size: 13px;
+  border: 1px solid #8ca5bc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.author-btn:hover,
+.author-topbar button:hover,
+.author-form button:hover,
+.author-vars button:hover {
+  background: #f0f4f8;
+}
+
+/* 主操作按钮：保存草稿（深蓝底白字；提高选择器优先级，避免被 .author-topbar button 覆盖背景） */
+.author-topbar .author-save {
+  padding: 7px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.author-topbar .author-save:disabled {
+  background: #9db7e8;
+  border-color: #9db7e8;
+  color: #ffffff;
+  cursor: default;
+}
+
+/* 危险操作：白底红字，显式背景避免继承异常 */
+.author-danger {
+  color: #b00020;
+  border-color: #e0a6b0;
+  background: #ffffff;
+}
+
+.author-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.author-left {
+  width: 400px;
+  min-width: 360px;
+  overflow-y: auto;
+  padding: 12px;
+  background: #f7f8fa;
+  border-right: 1px solid #c9d5df;
+}
+
+.author-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* 画布节点：显式浅色背景 + 深色文字。React Flow 默认文字颜色是 inherit，
+   在某些环境下会继承成浅色，与白色节点底冲突导致看不见。这里双重覆盖。 */
+.author-canvas .react-flow {
+  --xy-node-color: #333333;
+  --xy-node-background-color: #ffffff;
+  --xy-node-border: 1px solid #b1b1b7;
+}
+
+.author-canvas .react-flow__node-default,
+.author-canvas .react-flow__node-output {
+  color: #333333;
+  background-color: #ffffff;
+  border: 1px solid #b1b1b7;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.author-canvas .react-flow__node-output {
+  border-color: #d9a514;
+}
+
+.author-hint {
+  margin: 4px 0 8px;
+  color: #526677;
+  font-size: 12px;
+}
+
+.author-empty {
+  color: #8a97a3;
+  font-size: 13px;
+  padding: 12px 4px;
+}
+
+.author-vars {
+  margin-bottom: 14px;
+  padding: 10px;
+  background: #fff9e6;
+  border: 1px solid #e8d9a0;
+  border-radius: 8px;
+}
+
+.author-vars summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.author-var-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.author-var-row input[type="text"],
+.author-var-row input:not([type]) {
+  width: 100%;
+  min-width: 0;
+}
+
+.author-var-id {
+  width: 72px !important;
+  flex: 0 0 72px;
+  color: #526677;
+  background: #eef2f5;
+  font-family: Consolas, monospace;
+  font-size: 11px;
+}
+
+.author-form {
+  padding: 4px 2px 40px;
+}
+
+.author-form-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-form-head h2 {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.author-form-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.author-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+}
+
+.author-field {
+  display: block;
+  margin: 10px 0;
+}
+
+.author-field > span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #40546b;
+}
+
+.author-field input,
+.author-field select,
+.author-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #c9d5df;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.author-field-row {
+  display: flex;
+  gap: 8px;
+}
+
+.author-field-row label {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-form h3 {
+  margin: 18px 0 4px;
+  font-size: 14px;
+}
+
+.author-choice {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #c9d5df;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.author-sub {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f3f6f8;
+}
+
+.author-sub-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #40546b;
+}
+
+.author-sub-title button {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.author-pair {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.author-pair select {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-check {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}

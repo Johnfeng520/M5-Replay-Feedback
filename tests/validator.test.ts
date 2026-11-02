@@ -57,7 +57,10 @@ describe("状态错误样例", () => {
     }
   });
   it("拿不到钥匙的样例只有结局不可达，无误报死端", () => {
-    const report = validateStory(read("invalid/unobtainable-key.story.json"), FULL_BUDGET);
+    const report = validateStory(
+      read("invalid/unobtainable-key.story.json"),
+      FULL_BUDGET,
+    );
     expect(report.issues.map((i) => i.code)).toEqual(["ENDING_UNREACHABLE"]);
     expect(report.issues[0].nodeId).toBe("n_good");
     expect(report.issues[0].path).toBeUndefined();
@@ -65,7 +68,10 @@ describe("状态错误样例", () => {
     expect(report.publishable).toBe(false);
   });
   it("死端同时报告卡住的状态与未满足条件", () => {
-    const report = validateStory(read("invalid/blocked-state.story.json"), FULL_BUDGET);
+    const report = validateStory(
+      read("invalid/blocked-state.story.json"),
+      FULL_BUDGET,
+    );
     const deadlock = report.issues.find(
       (i) => i.code === "NONTERMINAL_DEADLOCK",
     )!;

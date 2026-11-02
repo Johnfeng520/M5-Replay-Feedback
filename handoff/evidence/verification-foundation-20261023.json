@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-10-23T09:36:23.728375+00:00",
+  "environment": {
+    "os": "Windows",
+    "node": "24.22.1",
+    "prisma": "6.19.0",
+    "machineScope": "本机；不代表其他成员机器已验收"
+  },
+  "command": "npm run verify",
+  "exitCode": 0,
+  "results": {
+    "typecheck": "passed",
+    "vitest": {
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0
+    },
+    "fixtureConsistency": "normal 与 restored-branch 及反馈绑定通过",
+    "contractChecks": {
+      "operations": 26,
+      "models": 23,
+      "examples": 17,
+      "result": "passed"
+    },
+    "productionBuild": "passed"
+  },
+  "browserChecks": [
+    "实际登录成功",
+    "刷新后登录状态恢复",
+    "基准剧情展示 5 节点与 2 变量",
+    "第二剧情展示 6 节点与 1 变量"
+  ],
+  "pdfReview": {
+    "documents": 6,
+    "pages": 22,
+    "result": "已逐页渲染检查，无裁切或重叠"
+  },
+  "fixedDuringVerification": [
+    "Windows 空库迁移前安全创建 SQLite 文件",
+    "迁移进程关闭非必要的版本检查并设置超时，避免测试初始化受网络检查拖延",
+    "Vite 构建环境与开发环境变量分离"
+  ],
+  "limits": [
+    "没有实现正式草稿 发布 试玩事务 存档 回放 反馈服务",
+    "没有进行跨电脑验收或真实访谈",
+    "状态检查反例和损坏事件只交付样例，不能算相应算法已通过"
+  ]
+}

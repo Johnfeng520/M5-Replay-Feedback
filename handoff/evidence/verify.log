@@ -1,0 +1,55 @@
+
+> campus-story-platform@0.1.0 verify
+> npm run typecheck && npm test && npm run fixtures:check && npm run contracts:check && npm run build
+
+
+> campus-story-platform@0.1.0 typecheck
+> tsc -p tsconfig.json --noEmit
+
+
+> campus-story-platform@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.4 <project>
+
+ ✓ tests/integration-m4.test.ts (29 tests) 3465ms
+ ✓ tests/validation-api.test.ts (6 tests) 1942ms
+ ✓ tests/foundation.test.ts (6 tests) 1885ms
+ ✓ tests/validator.test.ts (12 tests) 14ms
+ ✓ tests/engine.test.ts (19 tests) 12ms
+
+ Test Files  5 passed (5)
+      Tests  72 passed (72)
+   Start at  16:13:06
+   Duration  11.39s (transform 274ms, setup 0ms, collect 2.35s, tests 7.32s, environment 1ms, prepare 669ms)
+
+JSON report written to <project>/.local/vitest-results.json
+
+> campus-story-platform@0.1.0 fixtures:check
+> tsx scripts/check-fixtures.ts
+
+两个手工事件样例与反馈绑定已验证。损坏事件是待实现回放器的反例，未声称回放器通过。
+
+> campus-story-platform@0.1.0 contracts:check
+> tsx scripts/check-contracts.ts
+
+27 个 HTTP 操作、23 个模型及 17 个样例通过引用与字段校验。此脚本不是业务接口实现验收。
+
+> campus-story-platform@0.1.0 build
+> tsc -p tsconfig.json --noEmit && vite build --config apps/web/vite.config.ts
+
+vite v7.1.12 building for production...
+transforming...
+✓ 343 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.44 kB │ gzip:   0.33 kB
+dist/assets/index-Ml0sB_xT.css   23.63 kB │ gzip:   4.47 kB
+dist/assets/index-KkciZ1pd.js   520.84 kB │ gzip: 166.95 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.30s

@@ -1,0 +1,798 @@
+{
+  "numTotalTestSuites": 12,
+  "numPassedTestSuites": 12,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 72,
+  "numPassedTests": 72,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1793607186256,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 R01",
+          "status": "passed",
+          "title": "R01",
+          "duration": 3.2537000000000376,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 R02",
+          "status": "passed",
+          "title": "R02",
+          "duration": 0.21980000000002065,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 R03",
+          "status": "passed",
+          "title": "R03",
+          "duration": 0.22630000000003747,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 R04",
+          "status": "passed",
+          "title": "R04",
+          "duration": 0.12290000000001555,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 R05",
+          "status": "passed",
+          "title": "R05",
+          "duration": 0.2530999999999608,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 结局是终点",
+          "status": "passed",
+          "title": "结局是终点",
+          "duration": 0.6175000000000068,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 缺失变量状态拒绝",
+          "status": "passed",
+          "title": "缺失变量状态拒绝",
+          "duration": 0.1449000000000069,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 确定性和输入不变",
+          "status": "passed",
+          "title": "确定性和输入不变",
+          "duration": 0.36599999999998545,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 第二故事不修改引擎",
+          "status": "passed",
+          "title": "第二故事不修改引擎",
+          "duration": 0.6302000000000021,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "规则的独立预期"
+          ],
+          "fullName": "规则的独立预期 变量和节点改名后仍按配置工作",
+          "status": "passed",
+          "title": "变量和节点改名后仍按配置工作",
+          "duration": 0.23390000000000555,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/missing-target.story.json",
+          "status": "passed",
+          "title": "invalid/missing-target.story.json",
+          "duration": 1.4565000000000055,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/missing-entry.story.json",
+          "status": "passed",
+          "title": "invalid/missing-entry.story.json",
+          "duration": 0.3897000000000048,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/duplicate-node.story.json",
+          "status": "passed",
+          "title": "invalid/duplicate-node.story.json",
+          "duration": 0.3631000000000313,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/unknown-variable.story.json",
+          "status": "passed",
+          "title": "invalid/unknown-variable.story.json",
+          "duration": 0.3228000000000293,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/conflicting-effect.story.json",
+          "status": "passed",
+          "title": "invalid/conflicting-effect.story.json",
+          "duration": 0.33950000000004366,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/ending-choice.story.json",
+          "status": "passed",
+          "title": "invalid/ending-choice.story.json",
+          "duration": 0.37000000000000455,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/variable-limit.story.json",
+          "status": "passed",
+          "title": "invalid/variable-limit.story.json",
+          "duration": 0.3432000000000244,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 invalid/unreachable-node.story.json",
+          "status": "passed",
+          "title": "invalid/unreachable-node.story.json",
+          "duration": 0.3865999999999872,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "结构错误样例"
+          ],
+          "fullName": "结构错误样例 两个正常剧情结构通过",
+          "status": "passed",
+          "title": "两个正常剧情结构通过",
+          "duration": 0.3871000000000322,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1793607197597,
+      "endTime": 1793607197608.3872,
+      "status": "passed",
+      "message": "",
+      "name": "<project>/tests/engine.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "数据库健康检查",
+          "status": "passed",
+          "title": "数据库健康检查",
+          "duration": 63.121900000000096,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "未登录拒绝样例读取",
+          "status": "passed",
+          "title": "未登录拒绝样例读取",
+          "duration": 0.776299999999992,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "错误来源拒绝写入",
+          "status": "passed",
+          "title": "错误来源拒绝写入",
+          "duration": 4.559699999999793,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "错误密码拒绝",
+          "status": "passed",
+          "title": "错误密码拒绝",
+          "duration": 35.51980000000003,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "登录 查询样例 与退出",
+          "status": "passed",
+          "title": "登录 查询样例 与退出",
+          "duration": 53.52210000000014,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "同一事务内失败回滚",
+          "status": "passed",
+          "title": "同一事务内失败回滚",
+          "duration": 4.824200000000019,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1793607196475,
+      "endTime": 1793607196637.8242,
+      "status": "passed",
+      "message": "",
+      "name": "<project>/tests/foundation.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "fullName": "真实 HTTP：创作、保存重载、检查与发布贯通，摘要一致",
+          "status": "passed",
+          "title": "真实 HTTP：创作、保存重载、检查与发布贯通，摘要一致",
+          "duration": 46.446100000000115,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "真实 HTTP 响应符合共享 OpenAPI，覆盖各模块交接的数据结构",
+          "status": "passed",
+          "title": "真实 HTTP 响应符合共享 OpenAPI，覆盖各模块交接的数据结构",
+          "duration": 216.50790000000006,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "活动创建幂等且同键不同载荷冲突",
+          "status": "passed",
+          "title": "活动创建幂等且同键不同载荷冲突",
+          "duration": 9.679599999999937,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "草稿权限隔离、并发修订只允许一次写入",
+          "status": "passed",
+          "title": "草稿权限隔离、并发修订只允许一次写入",
+          "duration": 27.195400000000063,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "拒绝伪造 playerId/state 等额外字段和未登录发布",
+          "status": "passed",
+          "title": "拒绝伪造 playerId/state 等额外字段和未登录发布",
+          "duration": 29.59990000000016,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "摘要规范化排序且包含素材，不受对象插入顺序影响",
+          "status": "passed",
+          "title": "摘要规范化排序且包含素材，不受对象插入顺序影响",
+          "duration": 0.9492999999997664,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "发布素材按内容固定，源文件变更被发现，越界路径被拒绝",
+          "status": "passed",
+          "title": "发布素材按内容固定，源文件变更被发现，越界路径被拒绝",
+          "duration": 14.695799999999963,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "发布捕获修订后发生编辑：最终事务拒绝旧候选，不产生版本",
+          "status": "passed",
+          "title": "发布捕获修订后发生编辑：最终事务拒绝旧候选，不产生版本",
+          "duration": 24.612499999999727,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "发布拒绝真实阻塞剧情、缺失素材和结构错误",
+          "status": "passed",
+          "title": "发布拒绝真实阻塞剧情、缺失素材和结构错误",
+          "duration": 48.177599999999984,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "检查预算耗尽，即使没有问题列表也不能发布",
+          "status": "passed",
+          "title": "检查预算耗尽，即使没有问题列表也不能发布",
+          "duration": 14.798499999999876,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "时间截断边界可控：刚好预算可继续，超过预算拒绝通过",
+          "status": "passed",
+          "title": "时间截断边界可控：刚好预算可继续，超过预算拒绝通过",
+          "duration": 1.2241000000003623,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "发布幂等回执先于旧修订校验，v2不覆盖v1",
+          "status": "passed",
+          "title": "发布幂等回执先于旧修订校验，v2不覆盖v1",
+          "duration": 43.47460000000001,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "玩家创建幂等，同一版本不同玩家的进度独立",
+          "status": "passed",
+          "title": "玩家创建幂等，同一版本不同玩家的进度独立",
+          "duration": 48.61259999999993,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "服务端条件防作弊，非法选择不改变状态、不写事件",
+          "status": "passed",
+          "title": "服务端条件防作弊，非法选择不改变状态、不写事件",
+          "duration": 33.82409999999982,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "选择重试命中原回执，即使已经前进；同键不同选择拒绝",
+          "status": "passed",
+          "title": "选择重试命中原回执，即使已经前进；同键不同选择拒绝",
+          "duration": 48.644700000000284,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "相同 expectedSeq 的并发不同请求只提交一个，状态与事件一致",
+          "status": "passed",
+          "title": "相同 expectedSeq 的并发不同请求只提交一个，状态与事件一致",
+          "duration": 36.605899999999565,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "并发同请求只产生一条事件并返回同一回执",
+          "status": "passed",
+          "title": "并发同请求只产生一条事件并返回同一回执",
+          "duration": 33.90939999999955,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "两个独立数据库客户端竞争同一序号，数据库仍只提交一次",
+          "status": "passed",
+          "title": "两个独立数据库客户端竞争同一序号，数据库仍只提交一次",
+          "duration": 46.632400000000416,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "事件写入后故障：状态、事件及回执一起回滚，同键重试可成功",
+          "status": "passed",
+          "title": "事件写入后故障：状态、事件及回执一起回滚，同键重试可成功",
+          "duration": 41.103799999999865,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "完整合法路径与两种结局可实际执行",
+          "status": "passed",
+          "title": "完整合法路径与两种结局可实际执行",
+          "duration": 67.99319999999989,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "存档只捕获服务器状态，修订过期拒绝，成功回执可重复读取",
+          "status": "passed",
+          "title": "存档只捕获服务器状态，修订过期拒绝，成功回执可重复读取",
+          "duration": 51.83669999999984,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "发布新版后恢复原版新分支，seq=0、来源明确、不覆盖原会话",
+          "status": "passed",
+          "title": "发布新版后恢复原版新分支，seq=0、来源明确、不覆盖原会话",
+          "duration": 80.60059999999976,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "恢复错误权限或损坏状态时拒绝，不产生新分支",
+          "status": "passed",
+          "title": "恢复错误权限或损坏状态时拒绝，不产生新分支",
+          "duration": 40.27270000000044,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "恢复事务的尾部失败，创建的新会话与操作回执一起回滚",
+          "status": "passed",
+          "title": "恢复事务的尾部失败，创建的新会话与操作回执一起回滚",
+          "duration": 46.61740000000009,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "共享默认关闭，授权后创作者可读取，撤销立即阻止后续读取",
+          "status": "passed",
+          "title": "共享默认关闭，授权后创作者可读取，撤销立即阻止后续读取",
+          "duration": 66.66859999999997,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "固定版本损坏/规则版本不支持时显式拒绝",
+          "status": "passed",
+          "title": "固定版本损坏/规则版本不支持时显式拒绝",
+          "duration": 41.4409999999998,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "第二个服务实例从同数据库恢复实际进度，不依赖进程内存",
+          "status": "passed",
+          "title": "第二个服务实例从同数据库恢复实际进度，不依赖进程内存",
+          "duration": 70.35660000000007,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "SQLite 一致备份与新目录恢复保留版本/存档/事件，拒绝覆盖和篡改包",
+          "status": "passed",
+          "title": "SQLite 一致备份与新目录恢复保留版本/存档/事件，拒绝覆盖和篡改包",
+          "duration": 109.82560000000012,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [],
+          "fullName": "生产静态目录仅提供构建产物，源代码/配置和未知 API 不会泄漏",
+          "status": "passed",
+          "title": "生产静态目录仅提供构建产物，源代码/配置和未知 API 不会泄漏",
+          "duration": 14.048899999999776,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1793607189810,
+      "endTime": 1793607191168.0488,
+      "status": "passed",
+      "message": "",
+      "name": "<project>/tests/integration-m4.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 未登录拒绝",
+          "status": "passed",
+          "title": "未登录拒绝",
+          "duration": 2.2127999999997883,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 非所有者按不存在处理",
+          "status": "passed",
+          "title": "非所有者按不存在处理",
+          "duration": 51.17950000000019,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 修订不符返回 409 与当前修订",
+          "status": "passed",
+          "title": "修订不符返回 409 与当前修订",
+          "duration": 4.1778000000003885,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 健康草稿完整搜索通过并可发布",
+          "status": "passed",
+          "title": "健康草稿完整搜索通过并可发布",
+          "duration": 6.091600000000199,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 有状态错误的草稿返回问题但不视为 HTTP 失败",
+          "status": "passed",
+          "title": "有状态错误的草稿返回问题但不视为 HTTP 失败",
+          "duration": 9.446699999999964,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "POST /activities/:id/checks"
+          ],
+          "fullName": "POST /activities/:id/checks 错误来源拒绝写请求",
+          "status": "passed",
+          "title": "错误来源拒绝写请求",
+          "duration": 0.6149999999997817,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1793607193872,
+      "endTime": 1793607193945.615,
+      "status": "passed",
+      "message": "",
+      "name": "<project>/tests/validation-api.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 invalid/unobtainable-key.story.json",
+          "status": "passed",
+          "title": "invalid/unobtainable-key.story.json",
+          "duration": 3.5522000000000276,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 invalid/blocked-state.story.json",
+          "status": "passed",
+          "title": "invalid/blocked-state.story.json",
+          "duration": 1.3394999999999868,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 invalid/closed-loop.story.json",
+          "status": "passed",
+          "title": "invalid/closed-loop.story.json",
+          "duration": 0.8515000000000441,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 状态反例的每条带路径问题都能被引擎复现",
+          "status": "passed",
+          "title": "状态反例的每条带路径问题都能被引擎复现",
+          "duration": 1.650100000000009,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 拿不到钥匙的样例只有结局不可达，无误报死端",
+          "status": "passed",
+          "title": "拿不到钥匙的样例只有结局不可达，无误报死端",
+          "duration": 0.6296999999999571,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "状态错误样例"
+          ],
+          "fullName": "状态错误样例 死端同时报告卡住的状态与未满足条件",
+          "status": "passed",
+          "title": "死端同时报告卡住的状态与未满足条件",
+          "duration": 0.6347000000000094,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "正常剧情与状态键"
+          ],
+          "fullName": "正常剧情与状态键 两个正常剧情完整搜索通过且可发布",
+          "status": "passed",
+          "title": "两个正常剧情完整搜索通过且可发布",
+          "duration": 0.5683999999999969,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "正常剧情与状态键"
+          ],
+          "fullName": "正常剧情与状态键 手推状态数：同一节点不同变量状态分别计数",
+          "status": "passed",
+          "title": "手推状态数：同一节点不同变量状态分别计数",
+          "duration": 1.366299999999967,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "正常剧情与状态键"
+          ],
+          "fullName": "正常剧情与状态键 结果确定性",
+          "status": "passed",
+          "title": "结果确定性",
+          "duration": 0.7092000000000098,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "预算截断"
+          ],
+          "fullName": "预算截断 maxStates=1 强制截断，绝不宣布通过或不存在",
+          "status": "passed",
+          "title": "maxStates=1 强制截断，绝不宣布通过或不存在",
+          "duration": 0.2077000000000453,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "预算截断"
+          ],
+          "fullName": "预算截断 结构错误时跳过状态搜索",
+          "status": "passed",
+          "title": "结构错误时跳过状态搜索",
+          "duration": 1.0427999999999997,
+          "failureMessages": [],
+          "meta": {}
+        },
+        {
+          "ancestorTitles": [
+            "检查器版本"
+          ],
+          "fullName": "检查器版本 validatorVersion 随算法语义维护",
+          "status": "passed",
+          "title": "validatorVersion 随算法语义维护",
+          "duration": 0.12529999999998154,
+          "failureMessages": [],
+          "meta": {}
+        }
+      ],
+      "startTime": 1793607197121,
+      "endTime": 1793607197134.1252,
+      "status": "passed",
+      "message": "",
+      "name": "<project>/tests/validator.test.ts"
+    }
+  ]
+}

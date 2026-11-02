@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #1d2e41;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+a {
+  color: #205f9a;
+}
+p {
+  overflow-wrap: anywhere;
+}
+.stage-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid #dce4ed;
+}
+.stage-nav span {
+  margin-left: auto;
+}
+.workspace-tools,
+.report {
+  margin: 16px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #dce4ed;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.workspace-tools p,
+.report p,
+.workspace-tools h2,
+.report h2 {
+  width: 100%;
+  margin: 4px 0;
+}
+.workspace-tools input[type="checkbox"] {
+  width: auto;
+}
+.workspace-tools input:not([type="checkbox"]),
+.workspace-tools select {
+  max-width: 350px;
+  padding: 8px;
+}
+.workspace-tools button {
+  padding: 8px 12px;
+}
+.workspace-tools > div {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.login {
+  max-width: 650px;
+  margin: 70px auto;
+  padding: 30px;
+  background: white;
+}
+.login form,
+.login label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login input {
+  padding: 10px;
+}
+.login button {
+  margin-top: 14px;
+  padding: 10px;
+}
+.author-editor {
+  margin: 16px;
+}
+.player-shell {
+  max-width: 1280px;
+  margin: auto;
+}
+.author-left {
+  max-height: 78vh;
+  overflow: auto;
+}
+.author-canvas {
+  min-height: 600px;
+}

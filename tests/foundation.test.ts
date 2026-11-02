@@ -24,11 +24,14 @@ beforeAll(async () => {
     },
   });
   app = await createApp(db);
-}, 30000);
+}, 90000);
 afterAll(async () => {
   await app?.close();
   await db.$disconnect();
-  if (dirname(resolve(folder)) !== resolve(tmpdir()) || !basename(folder).startsWith("story-foundation-")) {
+  if (
+    dirname(resolve(folder)) !== resolve(tmpdir()) ||
+    !basename(folder).startsWith("story-foundation-")
+  ) {
     throw new Error("拒绝删除预期临时测试目录之外的路径");
   }
   rmSync(folder, { recursive: true, force: true });

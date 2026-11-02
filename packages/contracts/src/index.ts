@@ -4,6 +4,9 @@ export const RULES_VERSION = "1.0" as const;
 export const LIMITS = {
   nodes: storySchema.properties.nodes.maxItems,
   variables: storySchema.properties.variables.maxItems,
+  choices: storySchema.properties.nodes.items.properties.choices.maxItems,
+  sessionChoices: 500,
+  listItems: 100,
   states: 6000,
   timeMs: 5000,
 } as const;

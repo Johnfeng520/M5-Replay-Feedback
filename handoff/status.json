@@ -1,29 +1,27 @@
 {
   "contractVersion": "1.0",
-  "status": "prepared-awaiting-team-review",
-  "actualTeamNamesKnown": false,
+  "stage": "integrated-m4-20261102",
+  "status": "local-integration-passed-awaiting-team-receipt",
   "completedLocally": [
-    "M1-1 剧情与表单契约 配置样例 只读结构页面",
-    "M2-1 规则语义 独立预期 纯引擎初版",
-    "M3-1 结构检查 错误配置 与后续状态检查样例",
-    "M3-2 完整状态搜索 前驱与反向可达性 三类状态反例发现",
-    "M3-3 反例路径与条件解释 预算截断报告 检查接口上线",
-    "M4-1 工程结构 数据模型 迁移 登录与本地启动材料",
-    "M5-1 正常 恢复 损坏事件样例 与反馈绑定协议"
-  ],
-  "requiresHumanEvidence": [
-    "五人实名认领与互审",
-    "至少两次目标用户访谈或任务观察",
-    "成员电脑的独立安装与启动"
+    "M1真实编辑/草稿接口",
+    "M2权威执行/选择事务与前端",
+    "M3有限状态检查与发布联调",
+    "M4权限/事务/摘要/发布/存档/恢复/备份/集成",
+    "M5最小事件写入/回执/授权读取桥接"
   ],
   "notImplemented": [
-    "草稿业务 CRUD 与可编辑画布",
-    "固定版本发布与检查报告的发布门禁绑定（M3-4 依赖 M4 发布服务）",
-    "权威会话执行与状态事件事务",
-    "存档与恢复",
-    "正式回放和反馈业务",
-    "对外部署与外部用户测试"
+    "M5完整规则回放",
+    "M5真实节点反馈",
+    "M5按版本统计",
+    "素材选择与播放UI",
+    "公网部署与真实用户测试"
+  ],
+  "requiresHumanEvidence": [
+    "组员独立安装与启动",
+    "真实用户任务试用",
+    "成员贡献认领与互审"
   ],
   "fullG0Passed": false,
-  "fullG1Passed": false
+  "fullG1Passed": false,
+  "note": "局部门禁及本机证据见STAGE-20261102.md；不代替团队正式签署"
 }
