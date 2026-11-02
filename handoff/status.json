@@ -1,13 +1,14 @@
 {
   "contractVersion": "1.0",
-  "stage": "integrated-m4-20261102",
+  "stage": "integrated-ornate-ui-20261102",
   "status": "local-integration-passed-awaiting-team-receipt",
   "completedLocally": [
     "M1真实编辑/草稿接口",
     "M2权威执行/选择事务与前端",
     "M3有限状态检查与发布联调",
     "M4权限/事务/摘要/发布/存档/恢复/备份/集成",
-    "M5最小事件写入/回执/授权读取桥接"
+    "M5最小事件写入/回执/授权读取桥接",
+    "用户提供华丽风素材的统一主体UI；登录/创作/试玩/存档与响应式布局"
   ],
   "notImplemented": [
     "M5完整规则回放",

@@ -1,0 +1,124 @@
+/* Application chrome only. Published story media is managed separately. */
+:root {
+  --ui-ink: #302d38;
+  --ui-muted: #766d66;
+  --ui-paper: #fffaf0;
+  --ui-paper-raised: #fffdf7;
+  --ui-page: #f0eadd;
+  --ui-line: #dfd2b8;
+  --ui-gold: #8d652c;
+  --ui-gold-soft: #cbb582;
+  --ui-accent: #4c4d86;
+  --ui-accent-soft: #eeedf6;
+  --ui-header: #292a3e;
+  --ui-success: #3d6653;
+  --ui-danger: #973f46;
+  --ui-grid: #d5c9af;
+  --ui-panel-frame: url("./assets/ornate/uibitmap.png");
+  --ui-inset-frame: url("./assets/ornate/uicomboboxbg.png");
+  --ui-button-normal: url("./assets/ornate/btn_normal.png");
+  --ui-button-hover: url("./assets/ornate/btn_over.png");
+  --ui-button-active: url("./assets/ornate/btn_click.png");
+  --ui-tab-normal: url("./assets/ornate/tab_unselected.png");
+  --ui-tab-selected: url("./assets/ornate/tab_selected.png");
+  --ui-scroll-track: url("./assets/ornate/vscroll_bg.png");
+  --ui-scroll-thumb: url("./assets/ornate/vscroll_bar.png");
+  color-scheme: light;
+}
+.ui-panel {
+  border: 16px solid transparent;
+  border-image: var(--ui-panel-frame) 16 fill / 16px / 0 stretch;
+  background: transparent;
+  padding: 15px 19px;
+  filter: drop-shadow(0 6px 12px #3e311509);
+}
+.ui-inset {
+  border: 10px solid transparent;
+  border-image: var(--ui-inset-frame) 10 fill / 10px / 0 stretch;
+  padding: 12px 14px;
+}
+button.ui-button,
+.author-topbar button.author-save,
+a.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  min-width: 142px;
+  border: solid transparent;
+  border-width: 5px 23px 5px 33px;
+  border-image: var(--ui-button-normal) 5 23 5 33 fill / 5px 23px 5px 33px / 0
+    stretch;
+  border-radius: 0;
+  padding: 4px 12px 4px 3px;
+  background: transparent;
+  color: var(--ui-ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+button.ui-button:hover:not(:disabled),
+.author-topbar button.author-save:hover:not(:disabled),
+a.ui-button:hover {
+  border-image-source: var(--ui-button-hover);
+  background: transparent;
+  color: #fffaf0;
+}
+button.ui-button:active:not(:disabled),
+.author-topbar button.author-save:active:not(:disabled),
+a.ui-button:active {
+  border-image-source: var(--ui-button-active);
+  transform: translateY(1px);
+  color: #fffaf0;
+}
+button.ui-button:disabled,
+.author-topbar button.author-save:disabled {
+  filter: grayscale(0.7);
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: transparent;
+  color: var(--ui-ink);
+}
+input[type="checkbox"] {
+  appearance: none;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: url("./assets/ornate/check_unselected.png") center / 15px 15px
+    no-repeat;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked {
+  background-image: url("./assets/ornate/check_selected.png");
+}
+input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+:where(button, a, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 4px;
+}
+@media (forced-colors: active) {
+  input[type="checkbox"] {
+    appearance: auto;
+  }
+  .ui-panel,
+  .ui-inset,
+  button.ui-button,
+  a.ui-button,
+  .author-topbar button.author-save {
+    border-image: none;
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}

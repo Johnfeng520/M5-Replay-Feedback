@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-11-02T08:15:18.602759+00:00",
-  "stage": "integrated-m4-20261102",
+  "recordedAt": "2026-11-02T08:56:22.008449+00:00",
+  "stage": "integrated-ornate-ui-20261102",
   "environment": {
     "os": "Windows",
     "node": "24.22.1",
@@ -29,22 +29,20 @@
     "gitDiffCheck": "passed"
   },
   "browserChecks": [
-    "实际编辑保存重载",
-    "检查和发布同一修订",
-    "真实固定版本试玩与条件禁用",
-    "保存并恢复原版新分支",
-    "刷新后继续到结局",
-    "第二套剧情使用同一发布流程"
+    "新主题登录成功",
+    "编辑既有草稿并保存为revision4",
+    "检查通过并发布v2",
+    "v2权威试玩/缺钥匙选项禁用",
+    "获取道具后保存/继续/恢复原版新会话",
+    "从恢复分支继续到结局",
+    "390与1280布局检查"
   ],
   "backupChecks": [
-    "真实SQLite VACUUM快照",
-    "自动化恢复到新库并续玩",
-    "固定素材校验/恢复",
-    "拒绝覆盖和篡改备份",
-    "npm run backup/restore CLI 实际执行成功"
+    "本轮集成测试包含SQLite一致备份、新库恢复和素材哈希核对",
+    "CLI实测记录继承M4阶段，见evidence/backup-cli.md"
   ],
   "warnings": [
-    "前端主包520.84KB，构建有超过500KB的路由拆包建议，构建成功"
+    "前端主包527.52KB，仍有既有的超过500KB拆包提示；构建成功。"
   ],
   "next": [
     "M5完整规则回放",
@@ -54,9 +52,48 @@
     "有实际主机与域名后的公网部署"
   ],
   "evidence": [
-    "evidence/verify.log",
-    "evidence/vitest-results.json",
-    "evidence/browser-smoke.md",
-    "evidence/browser-restore.png"
-  ]
+    "evidence/ui-ornate/verify.log",
+    "evidence/ui-ornate/vitest-results.json",
+    "evidence/ui-ornate/UI-验收记录.md",
+    "evidence/ui-ornate/login.png",
+    "evidence/ui-ornate/author.png",
+    "evidence/ui-ornate/player.png"
+  ],
+  "ui": {
+    "theme": "华丽风UI合集 / ornate-campus",
+    "sourcePngCount": 21,
+    "sourceBytesUnchanged": true,
+    "storyAssetCatalogueChanged": false,
+    "apiChanged": false,
+    "schemaOrRuleChanged": false,
+    "breakpointChecks": [
+      {
+        "page": "login",
+        "width": 390,
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      {
+        "page": "author",
+        "width": 390,
+        "clientWidth": 375,
+        "scrollWidth": 375
+      },
+      {
+        "page": "player",
+        "width": 390,
+        "clientWidth": 375,
+        "scrollWidth": 375
+      },
+      {
+        "page": "author",
+        "width": 1280,
+        "clientWidth": 1265,
+        "scrollWidth": 1265,
+        "sidebar": 370,
+        "canvas": 837
+      }
+    ],
+    "viewportResetAfterChecks": true
+  }
 }

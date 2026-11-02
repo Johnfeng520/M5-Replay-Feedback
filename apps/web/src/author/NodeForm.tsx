@@ -80,8 +80,8 @@ export function NodeForm(props: Props) {
             props.onPatch({ kind: e.target.value as "scene" | "ending" })
           }
         >
-          <option value="scene">scene（普通场景）</option>
-          <option value="ending">ending（结局）</option>
+          <option value="scene">普通场景</option>
+          <option value="ending">结局</option>
         </select>
       </label>
 
@@ -125,7 +125,7 @@ export function NodeForm(props: Props) {
         </label>
       </div>
 
-      <h3>选择（choices）</h3>
+      <h3>玩家可做的选择</h3>
       <p className="author-hint">
         连线由这些选项的「目标节点」自动生成，画布上不手动连线。
       </p>
@@ -162,7 +162,7 @@ export function NodeForm(props: Props) {
 
           <div className="author-sub">
             <span className="author-sub-title">
-              条件 conditions（variableId + equals）
+              出现条件
               <button
                 type="button"
                 onClick={() => props.onAddCondition(choice.id)}
@@ -211,7 +211,7 @@ export function NodeForm(props: Props) {
 
           <div className="author-sub">
             <span className="author-sub-title">
-              效果 effects（variableId + value）
+              选择后的变化
               <button
                 type="button"
                 onClick={() => props.onAddEffect(choice.id)}

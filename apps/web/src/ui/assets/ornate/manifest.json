@@ -1,0 +1,115 @@
+{
+  "theme": "ornate-campus",
+  "sourceArchive": "华丽风UI合集.rar",
+  "source": "用户提供的本地资源包",
+  "license": "原压缩包未附授权声明；未将其声明为CC0或原创素材",
+  "scope": "平台界面装饰，不进入Story、Layout、运行状态、发布快照或fixtures/assets/catalog.json",
+  "files": [
+    {
+      "file": "btn_click.png",
+      "sha256": "f03a69e8e059df8077e239f2c998e67767b180d6687cecb1fc2980df43b0e7eb",
+      "bytes": 6200
+    },
+    {
+      "file": "btn_normal.png",
+      "sha256": "f5aafc07948a95adb6aeb0b62ee916204ba6717ce93eed1d54822c779f1e49a0",
+      "bytes": 6285
+    },
+    {
+      "file": "btn_over.png",
+      "sha256": "f03a69e8e059df8077e239f2c998e67767b180d6687cecb1fc2980df43b0e7eb",
+      "bytes": 6200
+    },
+    {
+      "file": "check_selected.png",
+      "sha256": "c32707aa3819bff4686a510a28e7616dcbc49e7ca855250837fad434fceee647",
+      "bytes": 109
+    },
+    {
+      "file": "check_unselected.png",
+      "sha256": "e795d76be13047ccc9948e0548551d2a202377e923c27240d6978028e36eb959",
+      "bytes": 122
+    },
+    {
+      "file": "hscroll_bar.png",
+      "sha256": "6a132d42b11e9b2067cb327a6ee441453ac33582f668f46dc87605d80335f4bb",
+      "bytes": 2956
+    },
+    {
+      "file": "hscroll_bg.png",
+      "sha256": "dc926636cae66971b98653d68e615e5d02d99eed4b76844824be40d9b8fa88af",
+      "bytes": 2854
+    },
+    {
+      "file": "slider_bg.png",
+      "sha256": "39ed27a19ebff1585724de68df3df2e9b591cb738fed7e9f1d1f0b0df4571b5c",
+      "bytes": 223
+    },
+    {
+      "file": "slider_bgfill.png",
+      "sha256": "adb6bcf2216c03ee6b83e587e38538e289e0ac6c531fca8744a95468973d6c91",
+      "bytes": 89
+    },
+    {
+      "file": "slider_block.png",
+      "sha256": "7084cc1d76b02ff29543f01d65d6a751069cd3e21ef55d37d2aee835cb240de4",
+      "bytes": 353
+    },
+    {
+      "file": "tab_selected.png",
+      "sha256": "98e79647345ddf97ed63246195403d86185d2177a70c4509c3bb1eede9ad9534",
+      "bytes": 935
+    },
+    {
+      "file": "tab_unselected.png",
+      "sha256": "520b24a81dfb6f7889c006ef4bc96d76ab8fadb7941ed66fa426f65aa217af4e",
+      "bytes": 702
+    },
+    {
+      "file": "uibitmap.png",
+      "sha256": "f05a2de3fe406cd5487befe269b99129cbef03618a5176be25311a2457bbb6bf",
+      "bytes": 6498
+    },
+    {
+      "file": "uicombobox.png",
+      "sha256": "dc2e7b3744d0340b76f4d256eff144d87ff20dfe16566401e43f5e478b8a05ad",
+      "bytes": 381
+    },
+    {
+      "file": "uicomboboxbg.png",
+      "sha256": "b348eb3d8b3a64ccd5916edf16d0cab73715c712bf02b6b55864d4da47b7a417",
+      "bytes": 2399
+    },
+    {
+      "file": "uicomboboxslider.png",
+      "sha256": "5760650e6ef4af3c92a56682b5c8d656727fa68ad55a3090cafef6e4d2ee221e",
+      "bytes": 2962
+    },
+    {
+      "file": "uilistBg.png",
+      "sha256": "908be2c963a6b90a2e3b205ffe3d15ab4043c0e7b9197132df64b7cc4f1ab634",
+      "bytes": 487
+    },
+    {
+      "file": "uilistover.png",
+      "sha256": "dc2e7b3744d0340b76f4d256eff144d87ff20dfe16566401e43f5e478b8a05ad",
+      "bytes": 381
+    },
+    {
+      "file": "uilistselect.png",
+      "sha256": "a1968283328abe0558ec0e6fe28d64f63a8540d8944d1f07ca82bcb3e3973200",
+      "bytes": 5108
+    },
+    {
+      "file": "vscroll_bar.png",
+      "sha256": "5760650e6ef4af3c92a56682b5c8d656727fa68ad55a3090cafef6e4d2ee221e",
+      "bytes": 2962
+    },
+    {
+      "file": "vscroll_bg.png",
+      "sha256": "2f9bc83ec8aabaadde525fa62d59ed8ef6822ce030fe4b6ba6df5b6691e94860",
+      "bytes": 1471
+    }
+  ],
+  "archiveSha256": "d0c41956a295ce899b0401bee7a587dca3633d7ff6f53975ae63b020ffe9a5aa"
+}

@@ -267,9 +267,7 @@ export function AuthorEditor({
               patchStory((s) => setStoryTitle(s, e.target.value))
             }
           />
-          <span className="author-revision">
-            修订 revision {draft.revision}
-          </span>
+          <span className="author-revision">修订 {draft.revision}</span>
           <button type="button" className="author-btn" onClick={handleAddNode}>
             新建节点
           </button>

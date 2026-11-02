@@ -1,0 +1,62 @@
+{
+  "recordedAt": "2026-11-02T08:15:18.602759+00:00",
+  "stage": "integrated-m4-20261102",
+  "environment": {
+    "os": "Windows",
+    "node": "24.22.1",
+    "prisma": "6.19.0",
+    "scope": "本机；不代替团队成员电脑或真实用户验收"
+  },
+  "command": "npm run verify",
+  "exitCode": 0,
+  "results": {
+    "typecheck": "passed",
+    "vitest": {
+      "passed": 72,
+      "failed": 0,
+      "skipped": 0,
+      "original": 43,
+      "newIntegration": 29
+    },
+    "fixtureConsistency": "passed",
+    "contractChecks": {
+      "operations": 27,
+      "models": 23,
+      "examples": 17,
+      "result": "passed"
+    },
+    "productionBuild": "passed",
+    "gitDiffCheck": "passed"
+  },
+  "browserChecks": [
+    "实际编辑保存重载",
+    "检查和发布同一修订",
+    "真实固定版本试玩与条件禁用",
+    "保存并恢复原版新分支",
+    "刷新后继续到结局",
+    "第二套剧情使用同一发布流程"
+  ],
+  "backupChecks": [
+    "真实SQLite VACUUM快照",
+    "自动化恢复到新库并续玩",
+    "固定素材校验/恢复",
+    "拒绝覆盖和篡改备份",
+    "npm run backup/restore CLI 实际执行成功"
+  ],
+  "warnings": [
+    "前端主包520.84KB，构建有超过500KB的路由拆包建议，构建成功"
+  ],
+  "next": [
+    "M5完整规则回放",
+    "节点反馈与版本统计",
+    "成员电脑复验",
+    "真实用户试用",
+    "有实际主机与域名后的公网部署"
+  ],
+  "evidence": [
+    "evidence/verify.log",
+    "evidence/vitest-results.json",
+    "evidence/browser-smoke.md",
+    "evidence/browser-restore.png"
+  ]
+}

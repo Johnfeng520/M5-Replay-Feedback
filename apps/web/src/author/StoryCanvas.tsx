@@ -41,10 +41,7 @@ export function StoryCanvas({
         type: n.kind === "ending" ? "output" : "default",
         position: layout.positions[n.id] ?? { x: 0, y: 0 },
         data: { label: n.title },
-        style:
-          n.id === selectedNodeId
-            ? { border: "2px solid #2563eb", boxShadow: "0 0 0 1px #2563eb" }
-            : undefined,
+        className: n.id === selectedNodeId ? "story-node--selected" : undefined,
       })),
     [story, layout, selectedNodeId],
   );
@@ -77,9 +74,9 @@ export function StoryCanvas({
         onMoveEnd={(_, viewport) => onViewportChange(viewport)}
         fitViewOptions={{ padding: 0.3 }}
       >
-        <Background />
+        <Background color="var(--ui-grid)" gap={24} size={1} />
         <Controls />
-        <MiniMap />
+        <MiniMap nodeColor="var(--ui-gold-soft)" maskColor="#eee7d899" />
       </ReactFlow>
     </div>
   );

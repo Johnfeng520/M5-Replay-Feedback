@@ -1,4 +1,4 @@
-import type { Story } from "@campus/contracts";
+import { LIMITS, type Story } from "@campus/contracts";
 
 type Props = {
   variables: Story["variables"];
@@ -11,9 +11,11 @@ type Props = {
 export function VariablesPanel({ variables, onAdd, onRemove, onPatch }: Props) {
   return (
     <details className="author-vars" open>
-      <summary>变量（道具 / 标记）　{variables.length} / 8</summary>
+      <summary>
+        道具与状态　{variables.length} / {LIMITS.variables}
+      </summary>
       <p className="author-hint">
-        变量只是故事的初始值；玩家状态只存在会话里，不会被写回 Story。
+        在这里设置初始道具与标记；每位玩家的进度单独记录。
       </p>
       {variables.map((v) => (
         <div className="author-var-row" key={v.id}>
@@ -29,8 +31,8 @@ export function VariablesPanel({ variables, onAdd, onRemove, onPatch }: Props) {
               onPatch(v.id, { kind: e.target.value as "item" | "flag" })
             }
           >
-            <option value="flag">flag</option>
-            <option value="item">item</option>
+            <option value="flag">标记</option>
+            <option value="item">道具</option>
           </select>
           <label className="author-check">
             <input
@@ -38,7 +40,7 @@ export function VariablesPanel({ variables, onAdd, onRemove, onPatch }: Props) {
               checked={v.initial}
               onChange={(e) => onPatch(v.id, { initial: e.target.checked })}
             />
-            initial
+            初始为是
           </label>
           <button type="button" onClick={() => onRemove(v.id)}>
             删除
@@ -46,7 +48,7 @@ export function VariablesPanel({ variables, onAdd, onRemove, onPatch }: Props) {
         </div>
       ))}
       <button type="button" className="author-btn" onClick={onAdd}>
-        新增变量
+        新增道具 / 标记
       </button>
     </details>
   );

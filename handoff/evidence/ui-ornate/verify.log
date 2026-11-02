@@ -1,0 +1,58 @@
+
+> campus-story-platform@0.1.0 verify
+> npm run typecheck && npm test && npm run fixtures:check && npm run contracts:check && npm run build
+
+
+> campus-story-platform@0.1.0 typecheck
+> tsc -p tsconfig.json --noEmit
+
+
+> campus-story-platform@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.4 <project>
+
+ ✓ tests/integration-m4.test.ts (29 tests) 33593ms
+ ✓ tests/validation-api.test.ts (6 tests) 1628ms
+ ✓ tests/foundation.test.ts (6 tests) 1603ms
+ ✓ tests/validator.test.ts (12 tests) 21ms
+ ✓ tests/engine.test.ts (19 tests) 43ms
+
+ Test Files  5 passed (5)
+      Tests  72 passed (72)
+   Start at  16:51:07
+   Duration  46.49s (transform 252ms, setup 0ms, collect 6.97s, tests 36.89s, environment 1ms, prepare 1.56s)
+
+JSON report written to <project>/.local/vitest-results.json
+
+> campus-story-platform@0.1.0 fixtures:check
+> tsx scripts/check-fixtures.ts
+
+两个手工事件样例与反馈绑定已验证。损坏事件是待实现回放器的反例，未声称回放器通过。
+
+> campus-story-platform@0.1.0 contracts:check
+> tsx scripts/check-contracts.ts
+
+27 个 HTTP 操作、23 个模型及 17 个样例通过引用与字段校验。此脚本不是业务接口实现验收。
+
+> campus-story-platform@0.1.0 build
+> tsc -p tsconfig.json --noEmit && vite build --config apps/web/vite.config.ts
+
+vite v7.1.12 building for production...
+transforming...
+✓ 345 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                        0.44 kB │ gzip:   0.33 kB
+dist/assets/btn_over-hIig884Y.png      6.20 kB
+dist/assets/btn_normal-BE1PgCG8.png    6.29 kB
+dist/assets/uibitmap-CLIvqObf.png      6.50 kB
+dist/assets/index-DpTWTuB8.css        50.14 kB │ gzip:  16.45 kB
+dist/assets/index-_ebTV5Na.js        527.52 kB │ gzip: 169.36 kB
+✓ built in 3.00s
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
